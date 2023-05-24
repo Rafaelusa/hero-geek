@@ -1,0 +1,254 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  font-size: 16px;
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #2c2c31;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #633bbc;
+}
+
+@keyframes entering {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  background-color: #101010;
+  color: #eaeaea;
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-areas: 
+  "profile timeline";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100vh;
+}
+
+body {
+  background-color: #f5f5f5; /* cor de fundo padrão */
+  color: #333333; /* cor do texto padrão */
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark-mode {
+  background-color: #000000; /* cor de fundo no modo escuro */
+  color: #ffffff; /* cor do texto no modo escuro */
+}
+
+.superman {
+  background-color: #0000FF; /* cor de fundo do tema Superman */
+  color: #ffffff; /* cor do texto do tema Superman */
+}
+
+.batman {
+  background-color: #000000; /* cor de fundo do tema Batman */
+  color: #ffffff; /* cor do texto do tema Batman */
+}
+
+aside {
+  background-color: inherit; /* cor de fundo padrão herdada do body */
+  color: inherit; /* cor do texto padrão herdada do body */
+}
+
+.superman aside {
+  background-color: #0000FF; /* cor de fundo do tema Superman para o aside */
+  color: #ffffff; /* cor do texto do tema Superman para o aside */
+}
+
+.batman aside {
+  background-color: #000000; /* cor de fundo do tema Batman para o aside */
+  color: #ffffff; /* cor do texto do tema Batman para o aside */
+}
+
+nav {
+  background-color: inherit; /* cor de fundo padrão herdada do body */
+  color: inherit; /* cor do texto padrão herdada do body */
+}
+
+.superman nav {
+  background-color: #b82e2ee8; /* cor de fundo do tema Superman para o nav */
+  color: #ffffff; /* cor do texto do tema Superman para o nav */
+}
+
+.batman nav {
+  background-color: #101010; /* cor de fundo do tema Batman para o nav */
+  color: #ffffff; /* cor do texto do tema Batman para o nav */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+/*estilo padrão */ 
+nav {
+  padding: 64px;
+  grid-area: timeline;
+  overflow-y: scroll;
+  animation: entering 0.7s ease-in-out;
+}
+
+.memory {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  margin-bottom: 64px;
+}
+
+.memory small {
+  color: #bebebf;
+  font-size: 0.75rem;
+}
+
+.memory h1 {
+  font-size: 2rem;
+  color: #eaeaea;
+  cursor: pointer;
+}
+
+.memory img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.memory div {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.memory:hover img{
+  transform: scale(1.1);
+}
+
+.memory p{
+  font-size: 1.2rem;
+  color: #bebebf;
+  line-height: 28px;
+}
+
+aside {
+  grid-area: profile;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-right: 1px solid;
+  border-image: linear-gradient(#727275, #2c2c31) 1;
+  background: black;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  
+}
+aside * {
+  animation: entering 0.7s ease-in-out;
+}
+
+aside img#logo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  background: linear-gradient(#d39e33, #ed5636, #633bbc) padding-box,
+  linear-gradient(260deg,#d39e33, #ed5636, #633bbc ) border-box;
+}
+
+aside p{
+  font-size: 2rem;
+  text-align: center;
+}
+
+aside span {
+  font-size: 0.75rem;
+  color: #9e9ea0;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+
+  body{
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.8fr;
+    grid-template-areas: 
+    "profile"
+    "timeline";
+  }
+
+  aside {
+    border-right: none;
+    padding: 32px 12px;
+  }
+
+  nav {
+    overflow-y: visible;
+    padding: 22px;
+  }
+}
